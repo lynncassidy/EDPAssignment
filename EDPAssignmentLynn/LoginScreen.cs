@@ -39,7 +39,7 @@ namespace EDPAssignmentLynn
                 Console.Write("Your account details cannot be found, try again");
             }
 
-            }
+            
 
 
         }
@@ -50,9 +50,23 @@ namespace EDPAssignmentLynn
         }
 
         //Brings up customer
-        private void onNextClicked(object sender, EvenArgs e)
+        private void onNextClicked(object sender, EventArgs e)
         {
-            customer
+            AccountScreen accounts = new AccountScreen();
+            MainWindow.GetInstance().PanelController.Controls.Remove(this);
+            MainWindow.GetInstance().PanelController.Controls.Add(AccountScreen);
+
+
+
+            /*    Character character = new Character(inputTxtName.Text,
+                  CharacterUtils.GetClass(characterSelectedPortrait.Tag.ToString()),
+                  characterSelectedPortrait.Image);
+    ​
+                //Create our CharacterConfig UserControl
+                CharacterConfig gints = new CharacterConfig(character);
+    ​
+                MainWindow.GetInstance().ContentPanel.Controls.Remove(this);
+            MainWindow.GetInstance().ContentPanel.Controls.Add(gints);*/
         }
     }
 }
