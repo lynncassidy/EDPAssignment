@@ -18,7 +18,7 @@ namespace EDPAssignmentLynn
         {
             InitializeComponent();
         }
-
+       
         private void OnLoginClicked(object sender, EventArgs e)
         {   
             //in order to check what user has entered need store entries in variables.
@@ -30,15 +30,29 @@ namespace EDPAssignmentLynn
             // Takes customer object from login handler and stores reference to it in customer.
             // If the email & password check out it will give you a customer object.
             // Need to put in try catch here to handle incorrect entries
+            try
+            {
             Customer customer = LoginHandler.Login(enteredEmail, enteredPassword);
+            }
+            catch(Exception ex)
+            {
+                Console.Write("Your account details cannot be found, try again");
+            }
 
+            }
 
 
         }
-
+        //Exits application
         private void OnExitClicked(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        //Brings up customer
+        private void onNextClicked(object sender, EvenArgs e)
+        {
+            customer
         }
     }
 }
