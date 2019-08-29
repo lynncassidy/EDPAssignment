@@ -29,10 +29,22 @@ namespace EDPAssignmentLynn
 
         private void OnDepositClicked(object sender, EventArgs e)
         {
-            //txtBoxDeposit.Text = customer.GetAccounts()[0].Balance + txtBoxBalance.Text(Int32.Parse)
-            decimal depositAmount = decimal.Parse(txtBoxDeposit.Text);
-            customer.GetAccounts()[0].Deposit(depositAmount);
-            UpdateAccountBalance();
+            try
+            {
+                //txtBoxDeposit.Text = customer.GetAccounts()[0].Balance + txtBoxBalance.Text(Int32.Parse)
+                decimal depositAmount = decimal.Parse(txtBoxDeposit.Text);
+                customer.GetAccounts()[0].Deposit(depositAmount);
+                UpdateAccountBalance();
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show("Error occured: " + ae.ParamName);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter numbers only");
+            }
+
         }
 
         private void UpdateAccountBalance()
@@ -49,14 +61,22 @@ namespace EDPAssignmentLynn
             }
             catch(ArgumentException ae)
             {
-
+                MessageBox.Show("Error occured: " + ae.ParamName);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter numbers only");
             }
         }
 
 
         private void OnLogoutClicked(object sender, EventArgs e)
         {
-
+            
+            LoginHandler.Logout(customer);
+            LoginScreen loginUser = new LoginScreen();
+            MainWindow.GetInstance().PanelController.Controls.Add(loginUser);
+            MainWindow.GetInstance().PanelController.Controls.Remove(this);
         }
     }
 }

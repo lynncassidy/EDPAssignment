@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
+            this.toolTipEmail = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnLogin
@@ -54,7 +56,6 @@
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            //this.btnExit.Click += new System.EventHandler(this.OnExitClicked);
             // 
             // lblEmail
             // 
@@ -80,6 +81,7 @@
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(201, 20);
             this.txtBoxEmail.TabIndex = 4;
+            this.toolTipEmail.SetToolTip(this.txtBoxEmail, "Enter your login email here\r\n");
             // 
             // txtBoxPassword
             // 
@@ -113,5 +115,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtBoxEmail;
         private System.Windows.Forms.TextBox txtBoxPassword;
+        private System.Windows.Forms.ToolTip toolTipEmail;
     }
 }
