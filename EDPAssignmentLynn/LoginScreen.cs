@@ -18,9 +18,9 @@ namespace EDPAssignmentLynn
         {
             InitializeComponent();
         }
-       
+
         private void OnLoginClicked(object sender, EventArgs e)
-        {   
+        {
             //in order to check what user has entered need store entries in variables.
 
             string enteredEmail = txtBoxEmail.Text;
@@ -32,12 +32,25 @@ namespace EDPAssignmentLynn
             // Need to put in try catch here to handle incorrect entries
             try
             {
-            Customer customer = LoginHandler.Login(enteredEmail, enteredPassword);
+                Customer customer = LoginHandler.Login(enteredEmail, enteredPassword);
+                if (customer != null)
+                {
+                    AccountScreen accounts = new AccountScreen(customer);
+                    MainWindow.GetInstance().PanelController.Controls.Remove(this);
+                    MainWindow.GetInstance().PanelController.Controls.Add(accounts);
+
+                }
+               
             }
-            catch(Exception ex)
+            catch (ArgumentException ae)
             {
-                Console.Write("Your account details cannot be found, try again");
+                
+
+                MessageBox.Show("Error occured: " + ae.ParamName);
             }
+            
+
+           
 
             
 
@@ -50,12 +63,8 @@ namespace EDPAssignmentLynn
         }
 
         //Brings up customer
-        private void onNextClicked(object sender, EventArgs e)
-        {
-            AccountScreen accounts = new AccountScreen();
-            MainWindow.GetInstance().PanelController.Controls.Remove(this);
-            MainWindow.GetInstance().PanelController.Controls.Add(AccountScreen);
-
+      
+            
 
 
             /*    Character character = new Character(inputTxtName.Text,
@@ -67,6 +76,6 @@ namespace EDPAssignmentLynn
     ​
                 MainWindow.GetInstance().ContentPanel.Controls.Remove(this);
             MainWindow.GetInstance().ContentPanel.Controls.Add(gints);*/
-        }
+        
     }
 }
