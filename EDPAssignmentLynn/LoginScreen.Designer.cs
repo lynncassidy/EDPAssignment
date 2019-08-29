@@ -65,6 +65,7 @@
             this.btnExit.Text = "Exit";
             this.toolTipExit.SetToolTip(this.btnExit, "Click here to exit.");
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.OnExitClicked);
             // 
             // lblEmail
             // 
@@ -98,6 +99,7 @@
             // 
             this.txtBoxPassword.Location = new System.Drawing.Point(455, 198);
             this.txtBoxPassword.Name = "txtBoxPassword";
+            this.txtBoxPassword.PasswordChar = '*';
             this.txtBoxPassword.Size = new System.Drawing.Size(201, 20);
             this.txtBoxPassword.TabIndex = 5;
             this.toolTipPassword.SetToolTip(this.txtBoxPassword, "Enter your login password here.\r\n");
